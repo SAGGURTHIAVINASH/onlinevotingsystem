@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Voting System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Arial", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 350px;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2, h3 {
+            margin-bottom: 10px;
+        }
+
+        .candidates button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: #ff6b81;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .candidates button:hover {
+            background: #ff4757;
+        }
+
+        #results {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Vote for Your Candidate</h2>
+        <div class="candidates">
+            <button onclick="vote('candidate1')">👤 Candidate A</button>
+            <button onclick="vote('candidate2')">👤 Candidate B</button>
+            <button onclick="vote('candidate3')">👤 Candidate C</button>
+        </div>
+        <h3>Voting Results</h3>
+        <div id="results">
+            <p>👤 Candidate A: <span id="candidate1-count">0</span> votes</p>
+            <p>👤 Candidate B: <span id="candidate2-count">0</span> votes</p>
+            <p>👤 Candidate C: <span id="candidate3-count">0</span> votes</p>
+        </div>
+    </div>
+
+    <script>
+        // Load votes from localStorage
+        const votes = JSON.parse(localStorage.getItem("votes")) || { candidate1: 0, candidate2: 0, candidate3: 0 };
+
+        // Update UI
+        function updateResults() {
+            document.getElementById("candidate1-count").innerText = votes.candidate1;
+            document.getElementById("candidate2-count").innerText = votes.candidate2;
+            document.getElementById("candidate3-count").innerText = votes.candidate3;
+        }
+
+        // Voting function
+        function vote(candidate) {
+            votes[candidate]++;
+            localStorage.setItem("votes", JSON.stringify(votes));
+            updateResults();
+        }
+
+        // Initialize results on page load
+        updateResults();
+    </script>
+</body>
+</html>

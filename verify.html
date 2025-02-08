@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP generator through email</title>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" ></script>
+   
+</head>
+<style>
+    
+    @import url("https://fonts.googlepis.com/css?family=Poppins:wght@400;500;600&dispaly=swap");
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            background: #8bb11f;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    .container {
+        background: #ffffff;
+        width: 400px;
+        border-radius: 5px;
+        padding: 25px;
+        text-align: center;
+    }
+    .form-group {
+        margin: 20px 0;
+        text-align: start;
+    }
+    .form-group input {
+        height: 50px;
+        width: 100%;
+        font-size: 15px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid #a3a3a3;
+    }
+    button {
+        width: 100%;
+        height: 45px;
+        cursor: pointer;
+        font-size: 16px;
+        background: #787878;
+        border-radius: 30px;
+        border: none;
+        color: #ffffff;
+        margin-bottom: 20px;
+    }
+    .otp-form p {
+        color: green;
+        margin: 20px;
+    }
+    .otp-form  {
+    
+    display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin: 20px;
+        
+    }
+    
+    .otp-group input {
+        height: 50px;
+        width: 50px;
+        padding: 5px;
+        font-size: 25px;
+        text-align: center;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #a3a3a3;
+    }
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    img {
+        height: 150px;
+        margin: 15px;
+    }
+    button.disable {
+        opacity: 0.6;
+        pointer-events: none;
+        user-select: none;
+    }
+</style>
+<body>
+    <div class="container step1">
+        <h2>OTP Verification</h2>
+        <br />
+        <h4>Enter your email address</h4>
+        <br />
+        <p>you will receive email within seconds</p>
+        <div class="form-group">
+            <input type="email" id="emailAddress" placeholder="email address" onkeyup="validateEmail(this.value)"/>
+            </div>
+            <button class="nextButton">Next &rarr;</button>
+        </div>
+    </div>
+   
+        <div class="container step2">
+            <h2>OTP Verification</h2>
+            <br />
+            <h4>Enter one-time password</h4>
+            <br />
+            <p>A one-time passwoed has been sent to <span id="verifyEmail"></span> </p>
+            <div class="otp-group">
+                <p>Enter the 4-digit code we sent via email to continue</p>
+                <div class="otp-group">
+                    <input type="number" />
+                    <input type="number" />
+                    <input type="number" />
+                    <input type="number" />
+                </div>
+                <p>Not your email? / Didn't recieve ?
+                    <a href="javascript:void(0)">Try Again</a>
+                </p>
+                </div>
+                <button class="nextButton">Next &rarr;</button>
+            </div>
+
+            <div class="container step3">
+                <h2>Congratulatios</h2>
+                <p>Welcome to home page</p>
+                <img src="w.jpg"/>
+                <h2>Thank You</h2>
+                <p>Your OTP Verification has been completed successfully!</p>
+                <br />
+                <h4>Enter your email address</h4>
+                <br />
+                <p>you will receive email within seconds</p>
+                <div class="form-group">
+                    <input type="email" id="emailAddress" placeholder="email address"/>
+                    </div>
+                    <button class="nextButton">Next &rarr;</button>
+                </div>
+            </div>
+            <script src="email.js"></script> 
+</body>
+</html>
